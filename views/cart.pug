@@ -1,0 +1,75 @@
+doctype html
+html
+  head
+    title User Cart
+    script(src="/js/cart.js" defer) // ✅ correct relative path & no need for `block scripts`
+
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f7f7f7;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+      th, td {
+        padding: 12px;
+        border-bottom: 1px solid #ccc;
+        text-align: left;
+      }
+      th {
+        background-color: #f0f0f0;
+      }
+      h1, h3 {
+        color: #333;
+      }
+      button {
+        background-color: #c0392b;
+        color: white;
+        border: none;
+        padding: 8px 12px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
+      button:hover {
+        background-color: #e74c3c;
+      }
+      .checkout {
+        margin-top: 20px;
+      }
+
+  body
+    h1 Your cart 
+
+    if items.length === 0
+      p Your cart is empty.
+    else
+      table
+        thead
+          tr
+            th Game
+            th Price
+            th Quantity
+            th Total
+            th Actions
+        tbody
+          each item in items
+            tr
+              td #{item.name}
+              td $#{item.price.toFixed(2)}
+              td #{item.quantity}
+              td $#{(item.price * item.quantity).toFixed(2)}
+              td
+                form(action=`/cart/remove?userId=${userId}&game=${item.id}` method="POST")
+                  button(type="submit") Remove
+
+      - let total = 0;
+      - for (let i = 0; i < items.length; i++) total += items[i].price * items[i].quantity;
+        span Total: $#{total.toFixed(2)}
+ 
+      form#checkoutForm(action=`/cart/checkout/${userId}` method="POST" class="checkout")
+        button(type="submit") Checkout

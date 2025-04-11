@@ -1,0 +1,22 @@
+doctype html
+html
+  head
+    title Game Details
+    block scripts
+    script(src="/game-detail.js" defer)  
+    body
+    block append nav
+
+    block layout-content
+    div.card-holder
+        h3 #{game.name}
+        img(src=game.image_url, alt=game.name)
+        p #{game.description}
+        p Price: $#{game.price}
+        p Category: #{game.category_name}
+        p Featured: #{game.is_featured ? 'Yes' : 'No'}
+        form(action=`/game/add/user/${userId}` method="POST")
+          input(type="hidden" name="quantity" value="1")
+          button(type="submit") Add to Cart      
+    br
+    a(href="/games/all") ← Back to all games

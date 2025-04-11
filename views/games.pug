@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    title Game Store
+        
+    block scripts
+    script(src="/games-list.js" defer)
+    script(src="/game-detail.js" defer)
+    link(rel="stylesheet", href="/static/style.css")
+  body
+    h1 Game List
+
+    //- CONTAINER FOR LOADED GAMES
+    .items-container
+      each game in gamesList
+        article.item
+          .text
+            h3 #{game.id}: #{game.name}
+            p #{game.description}
+            p Price: $#{game.price}
+            p Category: #{game.category_name}
+            p Featured: #{game.is_featured ? 'Yes' : 'No'}
+            img(src=game.image_url, alt=game.name)
+            a(href=`/games/${game.id}` )
+              button View
