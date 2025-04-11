@@ -23,5 +23,6 @@ http://localhost:3000/games/1
 http://localhost:3000/cart/user/1
 http://localhost:3000/cart/checkout/user/1
 
-These are endpoints that will appear with frontend too.
+These are endpoints that will appear with frontend too. Because I already do some of those with front end included,
+so we have to run it with frontend
 
