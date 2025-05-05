@@ -1,0 +1,20 @@
+extends layout
+
+block content
+  main.main-container
+    section#homepage
+      h2 Add Payment Method
+      form(method="POST", action="/payment/add")
+        div
+          label Card Number
+          input(type="text", name="cardNumber", required)
+        div
+          label Card Holder
+          input(type="text", name="cardHolder", required)
+        div
+          label Expiry Date (MM/YY)
+          input(type="text", name="expiryDate", required)
+        div
+          label Card Type (e.g., Visa, MasterCard)
+          input(type="text", name="cardType", required)
+        button(type="submit") Save Card

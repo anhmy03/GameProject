@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Cyberpunk 2077",
+    "price": 49.99,
+    "genre": "RPG",
+    "platform": "PC",
+    "developer": "CD Projekt",
+    "release_date": "2020-12-10",
+    "category": "RPG",
+    "image": "/images/cyberpunk.jpg"
+  },
+  {
+    "title": "Elden Ring",
+    "price": 59.99,
+    "genre": "Action RPG",
+    "platform": "PC",
+    "developer": "FromSoftware",
+    "release_date": "2022-02-25",
+    "category": "RPG",
+    "image": "/images/eldenring.jpg"
+  },
+  {
+    "title": "Hades",
+    "price": 24.99,
+    "genre": "Roguelike",
+    "platform": "Switch",
+    "developer": "Supergiant Games",
+    "release_date": "2020-09-17",
+    "category": "Indie",
+    "image": "/images/hades.jpg"
+  }
+]

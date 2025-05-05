@@ -1,0 +1,19 @@
+extends layout
+
+block content
+  main.main-container
+    section#homepage
+      h2 Your Order History
+
+      if orders.length > 0
+        each order in orders
+          .order-summary
+            h3 Order ID: #{order.order_id}
+            p Ordered on: #{order.order_date}
+            ul
+              each item in order.items
+                li
+                  img(src=item.image, alt=item.title, width="80")
+                  |  #{item.title} (x#{item.quantity}) - $#{item.price}
+      else
+        p You have no past orders yet.

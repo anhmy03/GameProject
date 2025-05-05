@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .form-container
+    h1 Log In
+    form(method="POST", action="/login")
+      div
+        label(for="email") Email
+        input(type="email", name="email", id="email", placeholder="Enter Email" required)
+      div
+        label(for="password") Password
+        input(type="password", name="password", id="password", placeholder="Enter Password" required)
+      button(type="submit") Log In
+    p
+      a(href="/signup") Don't have an account? Sign up here

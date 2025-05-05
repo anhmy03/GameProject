@@ -1,0 +1,29 @@
+extends layout
+
+block content
+  main.form-container
+    h1 Admin Bulk Upload
+
+    form(method="POST", action="/admin/upload", enctype="multipart/form-data")
+      div
+        label(for="file") Select JSON/CSV File:
+        input(type="file", name="file", accept=".json,.csv,.txt", required)
+      button(type="submit") Upload File
+
+    section(style="margin-top: 30px;")
+      h3 Instructions
+      p Accepted formats: JSON, CSV, or plain text
+      p Example JSON structure:
+      pre(style="background:#222; color:#fff; padding:10px; border-radius:5px; overflow-x:auto;")
+        |  [
+        |    {
+        |      "title": "Cyberpunk 2077",
+        |      "price": 49.99,
+        |      "genre": "RPG",
+        |      "platform": "PC",
+        |      "developer": "CD Projekt",
+        |      "release_date": "2020-12-10",
+        |      "category": "RPG",
+        |      "image": "/images/cyberpunk.jpg"
+        |    }
+        |  ]

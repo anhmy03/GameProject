@@ -1,0 +1,46 @@
+extends layout
+
+block content
+  main.main-container
+    section#homepage
+      h1 Admin Product Listing
+
+      //- Search & Filter
+      form(method="GET", action="/admin/products", class="search-container")
+        input(type="text", name="search", placeholder="Search by name", value=searchQuery || "")
+        select(name="category")
+          option(value="") All Categories
+          each c in categories
+            option(value=c selected=(c === selectedCategory))= c
+        button(type="submit") Filter
+
+      //- Add New Product Button
+      a(href="/admin/products/new", class="checkout-btn", style="margin: 20px 0; display: inline-block;") Add New Product
+
+      //- Products Table
+      if games.length
+        table.cart-table
+          thead
+            tr
+              th ID
+              th Name
+              th Category
+              th Price
+              th Image
+              th Actions
+          tbody
+            each game in games
+              tr
+                td= game.game_id
+                td= game.title
+                td= game.category
+                td $#{game.price.toFixed(2)}
+                td 
+                  img(src=game.image, alt=game.title, style="width:60px; border-radius:5px")
+                td
+                  a(href=`/admin/products/edit/${game.game_id}`) Edit
+                  |  |
+                  form(method="POST", action=`/admin/products/delete/${game.game_id}`, style="display:inline", onsubmit="return confirm('Are you sure?')")
+                    button(type="submit", style="background:none;border:none;color:red;cursor:pointer;") Delete
+      else
+        p No products found.

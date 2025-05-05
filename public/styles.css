@@ -1,0 +1,382 @@
+/* === GENERAL STYLES === */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+/* === HEADER === */
+header {
+    background: #333;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 15px;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #ffcc00;
+    font-weight: bold;
+    padding: 8px 12px;
+    transition: 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #ffcc00;
+    color: #333;
+    border-radius: 5px;
+}
+
+/* === PAGE DESCRIPTION === */
+#page-description {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* === MAIN CONTAINER === */
+.main-container {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* === SIDEBAR === */
+.sidebar {
+    width: 250px;
+    background: #444;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.sidebar h2 {
+    text-align: center;
+    color: #ffcc00;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px;
+    border-bottom: 1px solid #666;
+}
+
+.sidebar ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    display: block;
+}
+
+.sidebar ul li a:hover {
+    color: #ffcc00;
+}
+
+/* === HOMEPAGE CONTENT === */
+#homepage, #category-page {
+    flex: 1;
+    width: 100%;
+}
+
+h2 {
+    color: #ffcc00;
+}
+
+/* === SEARCH BAR === */
+.search-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+#searchBar {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    font-size: 16px;
+}
+
+/* === GAME GRID === */
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.game {
+    background: #333;
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.game img {
+    width: 100%;
+    max-width: 150px;
+    border-radius: 5px;
+}
+
+.game h3 {
+    margin: 10px 0;
+    color: #ffcc00;
+}
+
+.game a {
+    display: block;
+    background: #ffcc00;
+    color: #333;
+    padding: 8px;
+    margin-top: 10px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.game a:hover {
+    background: #ccaa00;
+}
+
+/* === FOOTER === */
+footer {
+    background: #222;
+    text-align: center;
+    padding: 15px;
+    margin-top: auto;
+}
+
+footer a {
+    color: #ffcc00;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+footer p {
+    margin-top: 10px;
+}
+
+/* === ICONS === */
+.cart-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.cart-count {
+    position: absolute;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 3px 7px;
+}
+
+/* === FORM STYLES (Signup/Login) === */
+.form-container {
+    width: 400px;
+    margin: 50px auto;
+    background: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 0, 0.2);
+}
+
+.form-container h1 {
+    text-align: center;
+    color: #ffcc00;
+    margin-bottom: 20px;
+}
+
+.form-container form div {
+    margin-bottom: 15px;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-container input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.form-container button {
+    width: 100%;
+    background: #ffcc00;
+    color: #333;
+    padding: 10px;
+    border: none;
+    font-weight: bold;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-container button:hover {
+    background: #ccaa00;
+}
+
+.form-container p {
+    text-align: center;
+    margin-top: 15px;
+}
+
+/* === GAME DETAIL PAGE === */
+.card-holder {
+    background: #333;
+    padding: 20px;
+    border-radius: 8px;
+    width: 500px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+.card-holder img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+/* === Enhanced Cart Table Layout === */
+.cart-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.cart-table th,
+.cart-table td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #444;
+}
+
+.cart-table th {
+    background-color: #222;
+    color: #ffcc00;
+}
+
+.cart-table td {
+    background-color: #2a2a2a;
+}
+
+/* Quantity input + button inline */
+.quantity-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.quantity-form input[type="number"] {
+    width: 60px;
+    padding: 5px 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: none;
+    background: #444;
+    color: #fff;
+    text-align: center;
+}
+
+.quantity-form button {
+    background-color: #555;
+    color: #ffcc00;
+    padding: 6px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.quantity-form button:hover {
+    background-color: #ffcc00;
+    color: #333;
+}
+
+/* Remove button */
+.remove-form button {
+    background-color: #c0392b;
+    color: #fff;
+    padding: 6px 12px;
+    border: none;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.remove-form button:hover {
+    background-color: #e74c3c;
+}
+
+
+/* === ORDER HISTORY PAGE === */
+.order-summary {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 5px rgba(255, 255, 0, 0.2);
+    width: 100%;
+}
+
+.order-summary h3 {
+    color: #ffcc00;
+    margin-bottom: 10px;
+}
+
+.order-summary ul {
+    list-style: none;
+    padding: 0;
+}
+
+.order-summary ul li {
+    background-color: #444;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.order-summary ul li img {
+    width: 60px;
+    height: auto;
+    border-radius: 5px;
+}

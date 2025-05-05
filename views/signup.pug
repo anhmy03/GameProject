@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .form-container
+    h1 Sign Up
+    form(method="POST", action="/signup")
+      div
+        label(for="username") Username
+        input(type="text", name="username", id="username", placeholder="Enter Username" required)
+      div
+        label(for="email") Email
+        input(type="email", name="email", id="email", placeholder="Enter Email" required)
+      div
+        label(for="password") Password
+        input(type="password", name="password", id="password", placeholder="Enter Password" required)
+      button(type="submit") Create Account
+    p
+      a(href="/login") Already have an account? Log in here

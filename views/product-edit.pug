@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  main.form-container
+    h1 Edit Product
+
+    form(method="POST", action=`/admin/products/edit/${game.game_id}`, enctype="multipart/form-data")
+        div
+            label(for="title") Title:
+            input(type="text", name="title", value=game.title, required)
+
+        div
+            label(for="price") Price:
+            input(type="number", step="0.01", name="price", value=game.price, required)
+
+        div
+            label(for="genre") Genre:
+            input(type="text", name="genre", value=game.genre, required)
+
+        div
+            label(for="platform") Platform:
+            input(type="text", name="platform", value=game.platform, required)
+
+        div
+            label(for="developer") Developer:
+            input(type="text", name="developer", value=game.developer, required)
+
+        div
+            label(for="release_date") Release Date:
+            input(type="date", name="release_date", value=game.release_date, required)
+
+        div
+            label(for="category") Category:
+            input(type="category", name="category", value=game.category, required)
+
+        input(type="hidden", name="existingImage", value=game.image)
+
+        div
+            label(for="image") Upload New Image:
+            input(type="file", name="image")
+
+        if game.image
+            div
+            label Existing Image:
+            img(src=game.image, style="max-width: 150px; display:block; margin-top: 10px;")
+            
+
+        button(type="submit") Save Changes

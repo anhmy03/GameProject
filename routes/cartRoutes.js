@@ -1,10 +1,22 @@
-const express = require('express');
-const router = express.Router();
-const controller = require('../controllers/cartController');
+"use strict";
 
-router.get('/user/:userId', controller.viewCart);
-router.post('/add/user/:userId', controller.addToCart);
-router.post('/remove', controller.removeFromCart);
-router.post('/checkout/user/:userId', controller.checkout);
+const express = require("express");
+const router = express.Router();
+const cartController = require("../controllers/cartController");
+const { ensureLoggedIn } = require("../middleware/authMiddleware");
+
+// Add to cart
+router.post("/add/:id", ensureLoggedIn, cartController.addToCart);
+
+// View cart
+router.get("/", ensureLoggedIn, cartController.viewCart);
+
+// Checkout
+router.post("/checkout", ensureLoggedIn, cartController.checkout);
+
+router.post("/update", ensureLoggedIn, cartController.updateQuantity);
+router.post("/remove", ensureLoggedIn, cartController.removeFromCart);
+
+
 
 module.exports = router;

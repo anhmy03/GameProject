@@ -1,52 +1,56 @@
 "use strict";
+
 const cartModel = require("../models/cartModel");
-const productModel = require("../models/productModel"); // in case you need product info when adding
-
-// View the current user's cart
-function viewCart(req, res) {
-  const userId = req.params.userId;
-
-  if (!userId) return res.status(400).json({ error: 'Missing user ID' });
-
-  const cartItems = cartModel.getCartByUserId(req.params.userId);
-  res.render('cart', { items: cartItems, userId }); 
-}
-// Add a game to the cart
+const paymentModel = require("../models/paymentModel");
+// Add to Cart
 function addToCart(req, res) {
-  const userId = req.params.userId;
-  const { gameId, quantity } = req.body;
-
-  if (!userId) return res.status(401).json({ error: 'User not logged in' });
-  if (!gameId || !quantity) return res.status(400).json({ error: 'Missing data' });
-
-  cartModel.addToCart(userId, parseInt(gameId), parseInt(quantity));
-  res.redirect('/cart'); // or res.json({ message: 'Added to cart' });
+  const userId = req.session.user.id;
+  const gameId = req.params.id;
+  cartModel.addToCart(userId, gameId);
+  res.redirect("/games");
 }
 
-// Remove a game from the cart
-function removeFromCart(req, res) {
-  const userId = req.query.userId;
-  const gameId = req.query.gameId;
-
-  if (!userId) return res.status(401).json({ error: 'User not logged in' });
-
-  cartModel.removeFromCart(userId, gameId);
-  res.redirect(`/cart/user/${userId}`);
+// View Cart
+function viewCart(req, res) {
+  const userId = req.session.user.id;
+  const cartItems = cartModel.getCartItems(userId);
+  const total = cartModel.getCartTotal(userId);
+  const paymentMethods = paymentModel.getUserCards(userId); // We'll define next
+  res.render("cart", { cartItems, total, paymentMethods, user: req.session.user });
 }
 
-// Checkout the cart
+
+// Checkout Cart
 function checkout(req, res) {
-  const userId = req.params.userId;
+  const userId = req.session.user.id;
+  const paymentMethodId = req.body.paymentMethodId;
 
-  if (!userId) return res.status(401).json({ error: 'User not logged in' });
+  if (!paymentMethodId) {
+    return res.redirect("/payment/add");
+  }
 
-  cartModel.checkout(userId);
-  res.redirect(`/cart/user/${userId}`);
+  cartModel.checkoutCart(userId, paymentMethodId); // assume model stores card ID
+  res.redirect("/orders");
 }
+
+
+function updateQuantity(req, res) {
+  const { cart_item_id, quantity } = req.body;
+  cartModel.updateCartItemQuantity(cart_item_id, quantity);
+  res.redirect("/cart");
+}
+
+function removeFromCart(req, res) {
+  const { cart_item_id } = req.body;
+  cartModel.removeCartItem(cart_item_id);
+  res.redirect("/cart");
+}
+
 
 module.exports = {
-  viewCart,
   addToCart,
+  viewCart,
+  checkout,
   removeFromCart,
-  checkout
+  updateQuantity
 };

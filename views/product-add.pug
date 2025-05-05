@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  main.form-container
+    h1 Add New Product
+
+    form(method="POST", action="/admin/products/new", enctype="multipart/form-data")
+      div
+        label(for="title") Title:
+        input(type="text", name="title", required)
+
+      div
+        label(for="price") Price:
+        input(type="number", name="price", step="0.01", required)
+
+      div
+        label(for="genre") Genre:
+        input(type="text", name="genre", required)
+
+      div
+        label(for="platform") Platform:
+        input(type="text", name="platform", required)
+
+      div
+        label(for="developer") Developer:
+        input(type="text", name="developer", required)
+
+      div
+        label(for="release_date") Release Date:
+        input(type="date", name="release_date", required)
+
+      div
+        label(for="category") Category:
+        input(type="text", name="category", required)
+
+      div
+        label(for="image") Upload Image:
+        input(type="file", name="image")
+
+      button(type="submit") Add Product

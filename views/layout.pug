@@ -1,0 +1,41 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{title || 'Game Store'}
+    link(rel="stylesheet", href="/styles.css")
+    script(src="/main.js", defer)
+
+  body
+    header
+      div#page-description
+        a(href="/")
+          img.logo(src="/images/divine.png", alt="Logo")
+      nav
+        ul
+          li
+            a(href="/games") Games
+          li
+            a(href="/cart") Cart
+          if !user
+            li
+              a(href="/login") Log In
+            li
+              a(href="/signup") Sign Up
+          else
+            if user
+              li
+                a(href="/orders") Order History
+              li
+            li
+              a(href="/logout") Logout
+            if user.isAdmin
+              li: a(href="/admin/upload") Bulk Upload
+              li: a(href="/admin/products") Product List
+    .main-container
+      block content
+
+    footer
+      p &copy; 2025 DivineGames. All rights reserved.
+      

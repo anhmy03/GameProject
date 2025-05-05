@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  main.main-container
+    section#homepage
+      .card-holder
+        h2= game.title
+        img(src=game.image, alt=game.title)
+        p Category: #{game.category}
+        p Genre: #{game.genre}
+        p Platform: #{game.platform}
+        p Developer: #{game.developer}
+        p Release Date: #{game.release_date}
+        p Price: $#{game.price}
+
+        form(method="POST", action=`/cart/add/${game.game_id}`)
+          input(type="hidden", name="quantity", value="1")
+          button(type="submit") Add to Cart
+
+        br
+        a(href="/games") ← Back to All Games
